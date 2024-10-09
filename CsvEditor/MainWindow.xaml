@@ -1,0 +1,23 @@
+﻿<Window x:Class="CsvEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CsvEditor"
+        mc:Ignorable="d" Title="MainWindow" Height="400" Width="400">
+
+    <Grid Background="LightGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Button x:Name="btnTest" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="30" FontSize="50" Click="btnTest_Click" >Run</Button>
+        
+    </Grid>
+
+</Window>
