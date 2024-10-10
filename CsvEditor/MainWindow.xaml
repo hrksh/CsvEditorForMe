@@ -12,13 +12,12 @@
 
     <DockPanel Background="Orange">
         <Menu DockPanel.Dock="Top">
-            <MenuItem x:Name="mnFile" Header="ファイル(F)">
-                <MenuItem x:Name="mnNewFile" Header="新しいファイル"/>
-                <MenuItem x:Name="mnSaveFile" Header="名前を付けて保存"/>
-                <MenuItem x:Name="mnOverWriteFile" Header="上書き保存"/>
+            <MenuItem x:Name="mnFile">
+                <MenuItem x:Name="mnNewFile"/>
+                <MenuItem x:Name="mnSaveFile"/>
+                <MenuItem x:Name="mnOverWriteFile"/>
             </MenuItem>
-            <MenuItem x:Name="mnSettings" Header="設定(C)">
-            </MenuItem>
+            <MenuItem x:Name="mnSettings"/>
         </Menu>
         <Grid DockPanel.Dock="Top" Background="AliceBlue" Margin="5">
             <Grid.ColumnDefinitions>
