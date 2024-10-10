@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.ComponentModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,6 +23,11 @@ namespace CsvEditor
         public MainWindow()
         {
             InitializeComponent();
+
+            if ((bool)DesignerProperties.GetIsInDesignMode(this))
+            {
+
+            }
         }
         /// <summary>
         /// テスト用クリックイベント
