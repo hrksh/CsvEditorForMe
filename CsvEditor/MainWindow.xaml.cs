@@ -38,7 +38,8 @@ namespace CsvEditor
         {
             InitializeComponent();
 
-            if (!(bool)DesignerProperties.GetIsInDesignMode(this))
+            // これ、.Net と .Net Frameworkで挙動が違うのかもしれないので調査する。
+            if (DesignerProperties.GetIsInDesignMode(this))
             {
                 this.mnFile.Header = MyResources.menuTxtFile;
                 this.mnNewFile.Header = MyResources.menuTxtOpenNewFile;
