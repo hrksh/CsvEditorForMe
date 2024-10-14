@@ -8,4 +8,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="GroupDocs.Editor" Version="24.8.0" />
+  </ItemGroup>
+
 </Project>

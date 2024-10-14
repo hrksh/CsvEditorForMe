@@ -1,16 +1,9 @@
-﻿using CsvEditor.Const;
-using System.ComponentModel;
-using System.Reflection.PortableExecutable;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using GroupDocs.Editor;
+using CsvEditor.Const;
+using GroupDocs.Editor.Options;
+using System.IO;
 
 namespace CsvEditor.Const
 {
@@ -54,7 +47,55 @@ namespace CsvEditor
         /// <param name="e">イベント引数</param>
         private void btnTest_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("hello world.");
+            CSVManager.Inst().Init("hoge.csv");
+            CSVManager.Inst().WordConvert("hoge", "Editid HOGE");
+        }
+    }
+
+    // GroupDocs.Editor for .NET 利用で作成 (NuGet)
+    // https://products.groupdocs.com/ja/editor/net/csv/
+
+    public class CSVManager()
+    {
+        private static CSVManager _csMgr = null;
+
+        public static CSVManager Inst()
+        {
+            if ( _csMgr == null) _csMgr = new CSVManager();
+            return _csMgr;
+        }
+
+        Editor _editor = null;
+        /// <summary>
+        /// セパレータ
+        /// </summary>
+        DelimitedTextEditOptions _editOptions = null;
+        DelimitedTextSaveOptions _saveOptions = null;
+
+        EditableDocument _beforeEdit = null;
+        EditableDocument _afterEdit = null;
+        string content = string.Empty;
+
+
+        public void Init(string filename) {
+
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filename);
+            if (!Path.Exists(path)) return;
+            if (this._editor != null) return;
+
+            // Editorインスタンス生成
+            this._editor = new Editor(filename);
+            this._editOptions = new DelimitedTextEditOptions(",");
+            this._beforeEdit = this._editor.Edit(this._editOptions);
+        }
+
+        public void WordConvert(string beforeword, string afterword)
+        {
+            this.content = _beforeEdit.GetContent();
+            string updatedContent = content.Replace(beforeword, afterword);
+            this._afterEdit = EditableDocument.FromMarkup(updatedContent, null);
+            this._saveOptions = new DelimitedTextSaveOptions(",");
+            this._editor.Save(this._afterEdit, "edited.csv", this._saveOptions);
         }
     }
 }

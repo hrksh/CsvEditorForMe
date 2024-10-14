@@ -24,6 +24,10 @@
                 <ColumnDefinition Width="1.5*" />
                 <ColumnDefinition Width="7*" />
             </Grid.ColumnDefinitions>
+
+            <UniformGrid Rows="2">
+                <Button Click="btnTest_Click">test</Button>
+            </UniformGrid>
         </Grid>
     </DockPanel>
 
